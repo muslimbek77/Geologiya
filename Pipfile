@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "==3.7.2"
+certifi = "==2023.5.7"
+charset-normalizer = "==3.2.0"
+defusedxml = "==0.7.1"
+diff-match-patch = "==20230430"
+django = "*"
+django-import-export = "==3.2.0"
+django-jazzmin = "==2.6.0"
+djangorestframework = "==3.14.0"
+et-xmlfile = "==1.1.0"
+idna = "==3.4"
+markuppy = "==1.14"
+modeltranslation = "==0.25"
+odfpy = "==1.4.1"
+openpyxl = "==3.1.2"
+pillow = "==10.0.0"
+pytz = "==2023.3"
+pyyaml = "==6.0.1"
+requests = "==2.31.0"
+sqlparse = "==0.4.4"
+tablib = "==3.5.0"
+tzdata = "==2023.3"
+urllib3 = "==2.0.4"
+xlrd = "==2.0.1"
+xlwt = "==1.3.0"
+django-ckeditor = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
