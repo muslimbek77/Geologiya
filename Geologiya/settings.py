@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a7)i@=n9u72$5l*h-9(%5t4r_4^)5o9+e#fbaq+a)!2zb77@i)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'geo',
     'rest_framework',
     'ckeditor',
-    'swagger',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +55,25 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Geologiya.urls'
 
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+    'api_key': {
+        'type': 'apiKey',
+        'in': 'header',
+        'name': 'Authorization'
+    }
+},  # setting to pass token in header
+'USE_SESSION_AUTH': False,
+# set to True if session based authentication needed
+'JSON_EDITOR': True,
+'api_path': 'api/',
+'api_version': 'v0',
+
+"is_authenticated": False,  # Set to True to enforce user authentication,
+"is_superuser": False,  # Set to True to enforce admin only access
+'unauthenticated_user': 'django.contrib.auth.models.AnonymousUser',
+# unauthenticated user will be shown as Anonymous user in swagger UI.
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -84,7 +103,7 @@ DATABASES = {
     }
 }
 
-
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -118,8 +137,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
+import os
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
